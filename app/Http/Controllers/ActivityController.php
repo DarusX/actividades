@@ -35,6 +35,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
+        $this->authorize('index', Activity::class);
         return view('activity.create')->with([
             'users' => User::users()->get()
         ]);
@@ -48,8 +49,9 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('index', Activity::class);
         Activity::create($request->all());
-        Mail::to([$request->user()->email])->send(new ActivityCreated());
+        Mail::to([User::find($request->user_id)->email])->send(new ActivityCreated());
         return redirect()->route('activity.index');
     }
 
@@ -61,7 +63,10 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->authorize('view', Activity::find($id));
+        return view('activity.show')->with([
+            'activity' => Activity::find($id),
+        ]);
     }
 
     /**
@@ -72,6 +77,7 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('index', Activity::class);
         return view('activity.edit')->with([
             'activity' => Activity::find($id),
             'users' => User::users()->get()
@@ -87,6 +93,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('index', Activity::class);
         Activity::find($id)->update($request->all());
         return redirect()->route('activity.index');
     }
@@ -99,6 +106,7 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('index', Activity::class);
         Activity::destroy($id);
     }
 }

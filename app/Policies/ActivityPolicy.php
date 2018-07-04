@@ -24,7 +24,7 @@ class ActivityPolicy
      */
     public function view(User $user, Activity $activity)
     {
-        if ($user->role == 'A') return true;
+        if ($user->role == 'A'  || $user->id == $activity->user_id) return true;
     }
 
     /**

@@ -20,7 +20,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user)
     {
         if ($user->role == 'A') return true;
     }

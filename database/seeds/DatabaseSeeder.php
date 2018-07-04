@@ -20,19 +20,23 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456'),
             'role' => 'U'
         ]);
-
         User::create([
             'email' => 'practicas106@hotmail.com',
             'name' => 'Emmanuel',
             'password' => bcrypt('123456'),
             'role' => 'U'
         ]);
-        
         User::create([
             'email' => 'mntr_rdrgz@hotmail.com',
             'name' => 'Fabián Montero',
             'password' => bcrypt('123456'),
             'role' => 'A'
+        ]);
+        User::create([
+            'email' => 'ssmontero@outlook.com',
+            'name' => 'Santiago Montero',
+            'password' => bcrypt('123456'),
+            'role' => 'U'
         ]);
     }
 }

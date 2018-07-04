@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name') }}
             </a>
         </div>
 
@@ -27,12 +27,16 @@
                     </a>
 
                     <ul class="dropdown-menu">
+                        @can('index', App\Activity::class)
                         <li>
                             <a href="{{ route('activity.index') }}">Actividades</a>
                         </li>
+                        @endcan
+                        @can('index', App\User::class)
                         <li>
                             <a href="{{ route('user.index') }}">Usuarios</a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
                 @endauth

@@ -49,6 +49,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view', User::class);
         return view('user.show')->with([
             'user' => User::find($id)
         ]);

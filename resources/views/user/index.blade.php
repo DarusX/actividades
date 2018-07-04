@@ -2,6 +2,7 @@
 @section('content')
 <div class="col-sm-12">
     <h1><strong>Usuarios</strong></h1>
+    <a href="{{route('user.create')}}" class="btn btn-default">Nuevo</a>
     <table class="table">
         <thead>
             <tr>

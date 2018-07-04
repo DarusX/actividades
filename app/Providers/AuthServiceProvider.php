@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Activity' => 'App\Policies\ActivityPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
     ];
 
     /**
@@ -26,6 +27,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::resource('activity', 'App\Policies\ActivityPolicy', [
+            'index' => 'index'
+        ]);
+        Gate::resource('user', 'App\Policies\UserPolicy', [
             'index' => 'index'
         ]);
     }
