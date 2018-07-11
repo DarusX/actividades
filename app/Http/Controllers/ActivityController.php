@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Activity;
 use App\User;
 use App\Mail\ActivityCreated;
+use App\Mail\ActivityReminder;
 use Mail;
 
 class ActivityController extends Controller
@@ -50,8 +51,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         $this->authorize('index', Activity::class);
-        Activity::create($request->all());
-        Mail::to([User::find($request->user_id)->email])->send(new ActivityCreated());
+        Mail::to([User::find($request->user_id)->email, 'mntr.rdrgz@gmail.com'])->send(new ActivityCreated(Activity::create($request->all())));
         return redirect()->route('activity.index');
     }
 
@@ -108,5 +108,12 @@ class ActivityController extends Controller
     {
         $this->authorize('index', Activity::class);
         Activity::destroy($id);
+    }
+    public function reminder($id)
+    {
+        $this->authorize('index', Activity::class);
+        $activity = Activity::find($id);
+        Mail::to([$activity->user->email, 'mntr.rdrgz@gmail.com'])->send(new ActivityReminder($activity));
+        return redirect()->back();
     }
 }

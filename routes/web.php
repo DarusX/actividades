@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::prefix('/activity')->group(function(){
+    Route::get('/reminder/{id}', 'ActivityController@reminder')->name('activity.reminder');
+});
 Route::resources([
     'activity' => 'ActivityController',
     'user' => 'UserController'

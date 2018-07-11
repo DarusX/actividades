@@ -36,7 +36,7 @@
             <input type="number" name="score" class="form-control" value="{{$activity->score}}" disabled>
         </div>
         <div class="form-group">
-            <a href="/home" class="btn btn-default">Regresar</a>
+            <a href="{{URL::previous()}}" class="btn btn-default">Regresar</a>
         </div>
 </div>
 @endsection
