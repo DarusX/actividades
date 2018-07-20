@@ -52,3 +52,8 @@
     </form>
 </div>
 @endsection
+@section('js')
+<script>
+    CKEDITOR.replace( 'description' );
+</script>
+@endsection

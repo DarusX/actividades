@@ -4,36 +4,27 @@
     <h1><strong>Actividad</strong></h1>
         <div class="form-group">
             <label for="">Actividad</label>
-            <input type="text" name="activity" class="form-control" value="{{$activity->activity}}" disabled>
+            <p class="form-control-static">{{$activity->activity}}</p>
         </div>
         <div class="form-group">
             <label for="">Puntos</label>
-            <input type="number" name="points" class="form-control" value="{{$activity->points}}" disabled>
+            <p class="form-control-static">{{$activity->points}}</p>
         </div>
         <div class="form-group">
             <label for="">Estimado</label>
-            <input type="date" name="estimated" class="form-control" value="{{$activity->estimated}}" disabled>
+            <p class="form-control-static">{{\Carbon\Carbon::createFromFormat('Y-m-d',$activity->estimated)->formatLocalized('%a %d %b %Y')}}</p>
         </div>
         <div class="form-group">
             <label for="">Descripción</label>
-            <textarea name="description" rows="10" class="form-control" disabled>{{$activity->description}}</textarea>
+            {!!$activity->description!!}
         </div>
         <div class="form-group">
             <label for="">Estatus</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="status" disabled value="Y" {{($activity->status == 'Y')?'checked':'' }}> Finalizada
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="status" disabled value="N" {{($activity->status == 'N')?'checked':'' }}> No Finalidad
-                </label>
-            </div>
+            <p class="form-control-static">{{($activity->status == 'Y')?'Finalizada':'Pendiente'}}</p>
         </div>
         <div class="form-group">
             <label for="">Calificación</label>
-            <input type="number" name="score" class="form-control" value="{{$activity->score}}" disabled>
+            <p class="form-control-static">{{$activity->score}}</p>
         </div>
         <div class="form-group">
             <a href="{{URL::previous()}}" class="btn btn-default">Regresar</a>

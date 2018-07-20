@@ -30,6 +30,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
     <script>
         jQuery.ajaxSetup({
             headers: {
@@ -50,5 +51,6 @@
         })
     })
     </script>
+    @yield('js')
 </body>
 </html>

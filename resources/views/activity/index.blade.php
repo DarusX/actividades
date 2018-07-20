@@ -21,10 +21,10 @@
             <tr class="{{($activity->status == null)?'success':''}} {{($activity->status == 'N')?'danger':''}}">
                 <td>{{$activity->points}}</td>
                 <td>{{$activity->score}}</td>
-                <td>{{$activity->activity}}</td>
-                <td>{{$activity->user->name}}</td>
+                <td><a href="{{route('activity.show', $activity)}}">{{$activity->activity}}</a></td>
+                <td><a href="{{route('user.show', $activity->user)}}">{{$activity->user->name}}</a></td>
                 <td>{{$activity->updated_at->diffForHumans()}}</td>
-                <td>{{$activity->estimated}}</td>
+                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d',$activity->estimated)->formatLocalized('%a %d %b %Y')}}</td>
                 <td>{{$activity->remaining}}</td>
                 <td>
                     <a href="{{route('activity.show', $activity)}}" class="btn btn-default btn-xs"><i class="fas fa-external-link-alt"></i></a>

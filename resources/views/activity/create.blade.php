@@ -26,11 +26,16 @@
         </div>
         <div class="form-group">
             <label for="">Descripción</label>
-            <textarea name="description" rows="10" class="form-control"></textarea>
+            <textarea name="description" rows="10" class="form-control" id="description"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-default">Guardar</button>
         </div>
     </form>
 </div>
+@endsection
+@section('js')
+<script>
+   CKEDITOR.replace( 'description' );
+</script>
 @endsection
