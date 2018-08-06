@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>{{$activity->activity}}</h1>
-    <p>{{$activity->description}}</p>
+    {!!$activity->description!!}
     <p style="font-style: italic">{{$activity->remaining}} días restantes</p>
     <a href="http://actividades.fmontero.com.mx/home">Actividades</a>
     

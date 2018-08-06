@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>{{$activity->activity}}</h1>
-    <p>{{$activity->description}}</p>
+    {!!$activity->description!!}
     <a href="http://actividades.fmontero.com.mx/home">Actividades</a>
     
 </body>

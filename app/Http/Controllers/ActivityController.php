@@ -51,7 +51,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         $this->authorize('index', Activity::class);
-        Mail::to([User::find($request->user_id)->email, 'mntr.rdrgz@gmail.com'])->send(new ActivityCreated(Activity::create($request->all())));
+        Mail::to([User::find($request->user_id)->email])->send(new ActivityCreated(Activity::create($request->all())));
         return redirect()->route('activity.index');
     }
 
@@ -113,7 +113,7 @@ class ActivityController extends Controller
     {
         $this->authorize('index', Activity::class);
         $activity = Activity::find($id);
-        Mail::to([$activity->user->email, 'mntr.rdrgz@gmail.com'])->send(new ActivityReminder($activity));
+        Mail::to([$activity->user->email])->send(new ActivityReminder($activity));
         return redirect()->back();
     }
 }
