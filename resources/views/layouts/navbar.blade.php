@@ -31,8 +31,7 @@
                         <li>
                             <a href="{{ route('activity.index') }}">Actividades</a>
                         </li>
-                        @endcan
-                        @can('index', App\User::class)
+                        @endcan @can('index', App\User::class)
                         <li>
                             <a href="{{ route('user.index') }}">Usuarios</a>
                         </li>
@@ -53,7 +52,11 @@
                     <a href="{{ route('register') }}">Register</a>
                 </li>
                 @else
-                <li><a href="/home"><i class="fas fa-tv"></i></a></li>
+                <li>
+                    <a href="/home">
+                        <i class="fas fa-tv"></i>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                         {{ Auth::user()->name }}
@@ -64,13 +67,14 @@
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                Logout
+                                Salir
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </li>
+                        <li><a href="#" onclick="event.preventDefault(); $('#modal-password').modal('toggle')">Cambiar Contraseña</a></li>
                     </ul>
                 </li>
                 @endguest
@@ -78,3 +82,27 @@
         </div>
     </div>
 </nav>
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-password">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Cambiar Password</h4>
+            </div>
+            <form action="{{route('user.password')}}" method="POST">
+                {{csrf_field()}}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

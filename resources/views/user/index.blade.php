@@ -15,7 +15,7 @@
         <tbody>
             @foreach($users as $user)
             <tr>
-                <td>{{$user->name}}</td>
+                <td><a href="{{route('user.show', $user)}}">{{$user->name}}</a></td>
                 <td>{{$user->activities->sum('score')}}</td>
                 <td>{{$user->activities->count()}}</td>
                 <td>

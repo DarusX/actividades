@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -38,7 +39,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt('123456'),
+            'role' => 'U'
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -87,5 +95,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function password(Request $request)
+    {
+        User::find(Auth::id())->update([
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('home');
     }
 }
